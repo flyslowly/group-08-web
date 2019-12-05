@@ -1,0 +1,541 @@
+{
+	"info": {
+		"_postman_id": "fe93f0f6-1aa6-4f4c-ba37-3f03f82bd198",
+		"name": "server",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET api",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /api/students 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8e0eee6a-74ec-4d98-a8d5-3c1ffb349770",
+						"exec": [
+							"// Save and read environment variables",
+							"",
+							"// 1) Create an environment in Postman:",
+							"// https://www.getpostman.com/docs/v6/postman/environments_and_globals/manage_environments",
+							"",
+							"// 2) Save reponse data in environment variable",
+							"var jsonData = pm.response.json();",
+							"var studentId = jsonData._id",
+							"pm.environment.set(\"student_id\", studentId);",
+							"",
+							"// 3) Use variable in later requests via {{variable}}",
+							"// GET {{host}}/api/camels/{{camel_id}}",
+							"var getStudentId = pm.variables.get(\"student_id\");",
+							"",
+							"// Test assertion examples",
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Body has correct ssn name and sex\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.ssn).to.eql(198800000000);",
+							"    pm.expect(jsonData.name.fname).to.eql(\"Tony\");",
+							"    pm.expect(jsonData.name.lname).to.eql(\"Stark\");",
+							"    pm.expect(jsonData.sex).to.eql(\"Male\");",
+							"});",
+							"",
+							"pm.test(\"Body has _id\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData._id).to.be.a('String');",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"ssn\":\"198800000000\",\n\t\"name\":{\n\t\t\"fname\":\"Tony\",\n\t\t\"lname\":\"Stark\"\n\t},\n\t\"sex\":\"Male\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/students",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"students"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /api/students 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8e0eee6a-74ec-4d98-a8d5-3c1ffb349770",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"ssn\":\"190000000000\",\n\t\"name\":{\n\t\t\"fname\":\"Doctor\",\n\t\t\"lname\":\"Strange\"\n\t},\n\t\"sex\":\"Male\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/students",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"students"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /api/students 3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8e0eee6a-74ec-4d98-a8d5-3c1ffb349770",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"ssn\":\"199910101010\",\n\t\"name\":{\n\t\t\"fname\":\"Captain\",\n\t\t\"lname\":\"America\"\n\t},\n\t\"sex\":\"Male\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/students",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"students"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/students",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/students",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"students"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/students/:id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/students/{{student_id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"students",
+						"{{student_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/students/:id",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "c67a5d47-3a70-45b0-8001-b37eb933382f",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"ssn\":\"199900000000\",\n\t\"name\":{\n\t\t\"fname\":\"Elon\",\n\t\t\"lname\":\"Musk\"\n\t},\n\t\"sex\":\"Male\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/students/{{student_id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"students",
+						"{{student_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH /api/students/:id",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":{\n\t\t\"fname\":\"Edward\"\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/students/{{student_id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"students",
+						"{{student_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /api/students/:id/todos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8e0eee6a-74ec-4d98-a8d5-3c1ffb349770",
+						"exec": [
+							"// Save and read environment variables",
+							"",
+							"// 1) Create an environment in Postman:",
+							"// https://www.getpostman.com/docs/v6/postman/environments_and_globals/manage_environments",
+							"",
+							"// 2) Save reponse data in environment variable",
+							"var jsonData = pm.response.json();",
+							"var todoId = jsonData._id",
+							"pm.environment.set(\"todo_id\", todoId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\":\"Fight\",\n\t\"date\":\"2019-12-31\",\n\t\"description\":\"Fight with Captain\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/students/{{student_id}}/todos",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"students",
+						"{{student_id}}",
+						"todos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /api/students/:id/todos 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8e0eee6a-74ec-4d98-a8d5-3c1ffb349770",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\":\"Dinner\",\n\t\"date\":\"2020-01-05\",\n\t\"description\":\"Have dinner with Pepper\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/students/{{student_id}}/todos",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"students",
+						"{{student_id}}",
+						"todos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/students/:id/todos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/students/{{student_id}}/todos",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"students",
+						"{{student_id}}",
+						"todos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/students/:id/todos/:id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/students/{{student_id}}/todos/{{todo_id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"students",
+						"{{student_id}}",
+						"todos",
+						"{{todo_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE /api/students/:id/todos/:id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/students/{{student_id}}/todos/{{todo_id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"students",
+						"{{student_id}}",
+						"todos",
+						"{{todo_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE /api/students/:id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/students/{{student_id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"students",
+						"{{student_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE /api/students",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/students",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"students"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE /api/todos",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/todos",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"todos"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
