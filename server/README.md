@@ -1,6 +1,6 @@
 # Server – ExpressJS Backend
 
-This [ExpressJS](https://expressjs.com/) template provides the basic infrastructure for a JSON API with MongoDB persistency with [Mongoose](https://mongoosejs.com/).
+This is the web backend powered by [ExpressJS](https://expressjs.com/) with the basic infrastructure for a JSON API with MongoDB persistency with [Mongoose](https://mongoosejs.com/).
 
 * [FAQ](docs/FAQ.md)
 * [Troubleshooting](docs/TROUBLESHOOTING.md)
@@ -50,8 +50,6 @@ npm test
 * You can import the Postman collection from [tests/server.postman_collection.json](./tests/server.postman_collection.json)
 * [Extracting data from responses and chaining requests](http://blog.getpostman.com/2014/01/27/extracting-data-from-responses-and-chaining-requests/)
 * For the final submission, export the Postman collection into `tests/api-tests.postman.json` and make sure `npm test` completes successfully.
-
-> Remember to **export and commit** any test changes back to `tests/server.postman_collection.json` and make sure `npm test` succeeds for your final submission!
 
 ## Debugging with VSCode
 
